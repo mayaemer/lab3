@@ -8,6 +8,8 @@ let increment = (function(i) {
 
 
 let create = document.getElementById('create');
+let addbtn = document.getElementById('addbtn');
+
 
 // function to create the note
 function createNote(){
@@ -80,6 +82,12 @@ function showCreate(){
 rxjs.fromEvent(create, 'click')
   .subscribe(() => showCreate()
 );
+
+rxjs.fromEvent(addbtn, 'click')
+  .subscribe(() => createNote()
+);
+
+
 
 
 
