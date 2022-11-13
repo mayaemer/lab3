@@ -11,9 +11,6 @@ let create = document.getElementById('create');
 let addbtn = document.getElementById('addbtn');
 
 
-
-
-
 // function to create the note
 function createNote(){
   event.preventDefault();
@@ -23,7 +20,7 @@ function createNote(){
   let div = document.getElementById('notesection');
   let colour = document.getElementById('colourChoice').value;
   let noteid = 'col' + val;
-  div.innerHTML += `<div id='` + noteid + `'> <h1>` + title + `</h1> </p>` + note + `</p> <button id='editBtn' class='` + noteid + `" "` + title + `" "` + note + `'>Edit</button> <button id='deleteBtn' class='` + noteid + `" "` + title + `'>Delete</button></div>`;
+  div.innerHTML += `<div id='` + noteid + `'> <h1>` + title + `</h1> </p>` + note + `</p> <button onClick='editNote("` + noteid + `","` + title + `","` + note + `")'>Edit</button> <button onClick='deleteNote("` + noteid + `","` + title + `")'>Delete</button></div>`;
 	let noteSection = document.getElementById(noteid);
   noteSection.style.backgroundColor = colour;
   document.getElementById('create').style.display ='block';
@@ -31,14 +28,6 @@ function createNote(){
   var title = document.getElementById('title').value;
   document.getElementById('title').value = '';
   document.getElementById('notetext').value = '';
-
-  let editBtn = document.getElementById('editBtn');
-
-  rxjs.fromEvent(editBtn, 'click')
-  .subscribe(() => 
-    editNote(noteid, title, note)
-  );
-
 }
 
 // function to edit the note
@@ -69,23 +58,10 @@ function saveNote(noteId){
   let note = document.getElementById('editText').value;
   let colour = document.getElementById('editColour').value;
   let div = document.getElementById(noteId);
-  div.innerHTML = `<h1>` + title + `</h1> </p>` + note + `</p> <button id='editBtn'>Edit</button> <button id='deleteBtn'>Delete</button>`;
+  div.innerHTML = `<h1>` + title + `</h1> </p>` + note + `</p> <button onClick='editNote("` + noteid + `","` + title + `","` + note + `")'>Edit</button> <button onClick='deleteNote("` + noteid + `","` + title + `")'>Delete</button>`;
   let noteSection = document.getElementById(noteid);
   noteSection.style.backgroundColor = colour;
-
-  editEvent(noteid, title, note)
-
-
 };
-
-function editEvent(noteid, title, note){
-  let editBtn = document.getElementById('editBtn');
-  rxjs.fromEvent(editBtn, 'click')
-  .subscribe(() => 
-    editNote(note)
-  );
-}
-
 
 //function to delete the note
 function deleteNote(noteId, title){
