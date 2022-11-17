@@ -20,18 +20,52 @@ function createNote(){
   let div = document.getElementById('notesection');
   let colour = document.getElementById('colourChoice').value;
   let noteid = 'col' + val;
-  div.innerHTML += `<div id='` + noteid + `'> <h1>` + title + `</h1> </p>` + note + `</p> <button onClick='editNote("` + noteid + `","` + title + `","` + note + `")'>Edit</button> <button onClick='deleteNote("` + noteid + `","` + title + `")'>Delete</button></div>`;
-	let noteSection = document.getElementById(noteid);
-  noteSection.style.backgroundColor = colour;
-  document.getElementById('create').style.display ='block';
-  document.getElementById('addnote').style.display = 'none';
-  var title = document.getElementById('title').value;
-  document.getElementById('title').value = '';
-  document.getElementById('notetext').value = '';
+  let noteEditBtnId = `notebutton-${noteid}`;
+  //div.innerHTML += `<div id='${noteid}'> <h1>` + title + `</h1> </p>` + note + `</p> <button id='${noteEditBtnId}'>Edit</button> <button id='deleteBtn' onClick='deleteNote("` + noteid + `","` + title + `")'>Delete</button></div>`;//onClick='editNote("${noteid}", "${title}", "${note}")'
+  // let noteSection = document.getElementById(noteid);
+  // noteSection.style.backgroundColor = colour;
+  // document.getElementById('create').style.display ='block';
+  // document.getElementById('addnote').style.display = 'none';
+  // var title = document.getElementById('title').value;
+  // document.getElementById('title').value = '';
+  // document.getElementById('notetext').value = '';
+
+  const newparentDiv = document.createElement("div");
+  newparentDiv.id = noteid;
+
+  const button = document.createElement("button");
+  button.innerText = "Edit";
+  
+  newparentDiv.appendChild(button);
+  div.appendChild(newparentDiv);
+
+  rxjs
+    .fromEvent(button, "click")
+    .subscribe(() => {
+
+      editNote(noteid, title, note);
+      console.log("new click");
+
+    });
+
+
+  console.log(title, note);
+
+  // let editBtn = document.getElementById(noteEditBtnId);
+  // rxjs.fromEvent(editBtn, 'click', true)
+  // .subscribe(() => {
+
+  //   editNote(noteid, title, note);
+  //   console.log("onclick");
+    
+  // })
 }
 
 // function to edit the note
 function editNote(noteId, title, note){
+
+console.log("edit note");
+
   let noteToEdit = document.getElementById(noteId);
   noteToEdit.innerHTML = '';
   noteToEdit.innerHTML = `<form id="editnote">
@@ -58,7 +92,7 @@ function saveNote(noteId){
   let note = document.getElementById('editText').value;
   let colour = document.getElementById('editColour').value;
   let div = document.getElementById(noteId);
-  div.innerHTML = `<h1>` + title + `</h1> </p>` + note + `</p> <button onClick='editNote("` + noteid + `","` + title + `","` + note + `")'>Edit</button> <button onClick='deleteNote("` + noteid + `","` + title + `")'>Delete</button>`;
+  div.innerHTML = `<h1>` + title + `</h1> </p>` + note + `</p> <button id="edit` + noteid + `">Edit</button> <button onClick='deleteNote("` + noteid + `","` + title + `")'>Delete</button> <script>let editBtn=document.getElementById('edit`+ noteId + `'); rxjs.fromEvent(editBtn, 'click') .subscribe(() => editNote(` + noteId + title + note`))</script>`;
   let noteSection = document.getElementById(noteid);
   noteSection.style.backgroundColor = colour;
 };
