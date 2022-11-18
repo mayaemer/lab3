@@ -20,45 +20,53 @@ function createNote(){
   let div = document.getElementById('notesection');
   let colour = document.getElementById('colourChoice').value;
   let noteid = 'col' + val;
-  let noteEditBtnId = `notebutton-${noteid}`;
-  //div.innerHTML += `<div id='${noteid}'> <h1>` + title + `</h1> </p>` + note + `</p> <button id='${noteEditBtnId}'>Edit</button> <button id='deleteBtn' onClick='deleteNote("` + noteid + `","` + title + `")'>Delete</button></div>`;//onClick='editNote("${noteid}", "${title}", "${note}")'
-  // let noteSection = document.getElementById(noteid);
-  // noteSection.style.backgroundColor = colour;
-  // document.getElementById('create').style.display ='block';
-  // document.getElementById('addnote').style.display = 'none';
-  // var title = document.getElementById('title').value;
-  // document.getElementById('title').value = '';
-  // document.getElementById('notetext').value = '';
 
   const newparentDiv = document.createElement("div");
   newparentDiv.id = noteid;
 
-  const button = document.createElement("button");
-  button.innerText = "Edit";
+  const titleElem = document.createElement("h1");
+  titleElem.innerText = title;
+
+  const noteElem = document.createElement("p");
+  noteElem.innerText = note;
+
+  const buttonElem = document.createElement("button");
+  buttonElem.innerText = "Edit";
+
+  const deleteBtnElem = document.createElement("button");
+  deleteBtnElem.innerText = "Delete";
   
-  newparentDiv.appendChild(button);
+
+  newparentDiv.appendChild(titleElem);
+  newparentDiv.appendChild(noteElem);
+  newparentDiv.appendChild(buttonElem);
+  newparentDiv.appendChild(deleteBtnElem);
+
   div.appendChild(newparentDiv);
 
+  let noteSection = document.getElementById(noteid);
+  noteSection.style.backgroundColor = colour;
+  document.getElementById('create').style.display ='block';
+  document.getElementById('addnote').style.display = 'none';
+  var title = document.getElementById('title').value;
+  document.getElementById('title').value = '';
+  document.getElementById('notetext').value = '';
+
   rxjs
-    .fromEvent(button, "click")
+    .fromEvent(buttonElem, "click")
     .subscribe(() => {
 
       editNote(noteid, title, note);
-      console.log("new click");
 
     });
 
+  rxjs
+    .fromEvent(deleteBtnElem, "click")
+    .subscribe(() => {
 
-  console.log(title, note);
+      deleteNote(noteid, title);
 
-  // let editBtn = document.getElementById(noteEditBtnId);
-  // rxjs.fromEvent(editBtn, 'click', true)
-  // .subscribe(() => {
-
-  //   editNote(noteid, title, note);
-  //   console.log("onclick");
-    
-  // })
+    });  
 }
 
 // function to edit the note
