@@ -60,7 +60,6 @@ function createNote() {
 
 // function to edit the note
 function editNote(noteId, title, note) {
-  console.log("edit note");
 
   let noteToEdit = document.getElementById(noteId);
 
@@ -137,30 +136,41 @@ function editNote(noteId, title, note) {
 //function to save the inputted values to the note
 function saveNote(noteId) {
   event.preventDefault();
-  let noteid = noteId;
   let title = document.getElementById("editTitle").value;
   let note = document.getElementById("editText").value;
   let colour = document.getElementById("editColour").value;
-  let div = document.getElementById(noteId);
-  div.innerHTML =
-    `<h1>` +
-    title +
-    `</h1> </p>` +
-    note +
-    `</p> <button id="edit` +
-    noteid +
-    `">Edit</button> <button onClick='deleteNote("` +
-    noteid +
-    `","` +
-    title +
-    `")'>Delete</button> <script>let editBtn=document.getElementById('edit` +
-    noteId +
-    `'); rxjs.fromEvent(editBtn, 'click') .subscribe(() => editNote(` +
-    noteId +
-    title +
-    note`))</script>`;
-  let noteSection = document.getElementById(noteid);
-  noteSection.style.backgroundColor = colour;
+  let div = document.getElementById(noteId.id);
+  div.innerHTML = '';
+
+  const noteTitle = document.createElement('h1');
+  noteTitle.innerText = title;
+
+  const noteText = document.createElement('p');
+  noteText.innerText = note;
+
+  const editBtn = document.createElement('button');
+  editBtn.innerText = 'Edit';
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.innerText = 'Delete';
+
+  div.appendChild(noteTitle);
+  div.appendChild(noteText);
+  div.appendChild(editBtn);
+  div.appendChild(deleteBtn);
+
+  div.style.backgroundColor = colour;
+
+  rxjs.fromEvent(editBtn, "click").subscribe(() => {
+    editNote(noteId.id, title, note);
+  });
+
+  rxjs.fromEvent(deleteBtn, "click").subscribe(() => {
+    deleteNote(noteId.id, title);
+  });
+
+
+
 }
 
 //function to delete the note
