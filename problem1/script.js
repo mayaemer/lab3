@@ -169,8 +169,6 @@ function saveNote(noteId) {
     deleteNote(noteId.id, title);
   });
 
-
-
 }
 
 //function to delete the note

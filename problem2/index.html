@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles.css">
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://unpkg.com/rxjs@7.5.7/dist/bundles/rxjs.umd.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <meta charset="UTF-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note App</title>
 </head>
 <body>
 
-    <input type="text" value='h' id='hour'/>
-    <input type="text" value='m' id='minute'/>
-    <input type="text" value='s' id='second'/>
-    <button>Start countdown</button>
+    <input type="number" min='0' id='hour'/>
+    <input type="number" min='0' id='minute'/>
+    <input type="number" min='0' id='second'/>
+    <button id="start">Start countdown</button>
 
     <script src="script.js"></script>
    
