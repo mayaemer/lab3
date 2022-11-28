@@ -1,0 +1,43 @@
+<!--basically, create headings for notes that relate to each other. each note is then a child element of the header. If you delete parent, it deletes all children elements-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://unpkg.com/rxjs@7.5.7/dist/bundles/rxjs.umd.min.js"></script>
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note App</title>
+</head>
+<body>
+    <button id="create">Create Note</button>
+
+    <!--form for user to input the title, body, colour of their note-->
+    <form id="addnote">
+        <label id="createLabel">Enter your title:</label>
+        <input type="text" id="title" name="title">
+        <label id="createLabel">Enter your note:</label>
+        <textarea id="notetext" name="notetext"></textarea>
+        <label for="colour" id="createLabel">Choose a colour:</label>
+        <select id="colourChoice" name="colourChoice">
+            <option value="#b3f0ff">Blue</option>
+            <option value="#ffbb99">Peach</option>
+            <option value="#b3e6b3">Green</option>
+            <option value="#ffcce6">Pink</option>
+        </select>
+        <button id="addbtn">Add</button>
+    </form>
+
+    <hr/>
+
+    <!--div where notes will be displayed-->
+    <div id="notesection">
+
+    </div>
+
+    <script src="script.js"></script>
+   
+</body>
+
+</html>
