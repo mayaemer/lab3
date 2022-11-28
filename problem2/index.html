@@ -11,11 +11,14 @@
 <body>
 
     <div id="startTimer">
-        <input type="number" min='0' id='minute'/>
+        <input type="number" min='0' id='hour' value='0'/>
+        <input type="number" min='0' id='minute' value='0'/>
+        <input type="number" min='0' id='second' value='0'/>
         <button id="start">Start countdown</button>
     </div>
 
     <div id="countdown">
+        <p id="hourCount"></p>
         <p id="minCount"></p>
         <p id="secCount"></p>
     </div>
