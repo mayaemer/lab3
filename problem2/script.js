@@ -4,7 +4,10 @@ const start = document.getElementById('start');
 const hourCount = document.getElementById('hourCount');
 const minCount = document.getElementById('minCount');
 const secCount = document.getElementById('secCount');
+const cd = document.getElementById('countdown');
+const sT = document.getElementById('startTimer');
 const endTimer = document.getElementById('endTimer');
+const timerForm = document.getElementById('timerForm');
 
 rxjs.fromEvent(start, 'click')
     .subscribe(() => {
@@ -13,6 +16,9 @@ rxjs.fromEvent(start, 'click')
 
 function startTimer(){
 
+    event.preventDefault();
+
+    cd.style.display = 'inline-block';
     endTimer.style.display = 'none';
 
     const timerHours = document.getElementById('hour').value;
@@ -22,7 +28,7 @@ function startTimer(){
     const hourInSecs = (timerHours * 60) * 60;
     const minInSecs = timerMins * 60;
 
-    timeInSecs = parseInt(hourInSecs) + parseInt(minInSecs) + parseInt(timerSecs);
+    const timeInSecs = parseInt(hourInSecs) + parseInt(minInSecs) + parseInt(timerSecs);
 
     let countdown = timeInSecs;
     const t = timeInSecs  * 1000;
@@ -32,7 +38,9 @@ function startTimer(){
     const sub = obs
         .subscribe(x => {
             if(x == (timeInSecs - 1)){
-                endTimer.style.display = 'block';
+                cd.style.display = 'none';
+                endTimer.style.display = 'grid';
+                timerForm.reset();
             }else{
                 countdown = countdown - 1;
                 displayCountdown(countdown)

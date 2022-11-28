@@ -1,3 +1,40 @@
+body {
+    margin: auto;
+    width: 100%;
+}
+
+#startTimer, #endTimer {
+    width: 50%;
+    margin: auto;
+
+}
+
+#startTimer{
+    padding-top: 10em;
+    padding-bottom: .5em;
+
+}
+
+#countdown {
+    width: 100%;
+}
+
 #endTimer {
     display: none;
 }
+
+#countdown, #endTimer{
+    text-align: center;
+    padding: .5em;
+    font-size: large;
+    font-weight: bold;
+}
+
+#hourCount, #minCount, #secCount {
+    display:inline-block;
+    text-align: center;
+
+}
+
+
+

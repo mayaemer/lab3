@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/rxjs@7.5.7/dist/bundles/rxjs.umd.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <meta charset="UTF-8">    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Note App</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div id="startTimer">
-        <input type="number" min='0' id='hour' value='0'/>
-        <input type="number" min='0' id='minute' value='0'/>
-        <input type="number" min='0' id='second' value='0'/>
+      <form id="timerForm">
+        <input type="number" min="0" id="hour" value="0" />
+        <input type="number" min="0" id="minute" value="0" />
+        <input type="number" min="0" id="second" value="0" />
         <button id="start">Start countdown</button>
+      </form>
     </div>
 
     <div id="countdown">
-        <p id="hourCount"></p>
-        <p id="minCount"></p>
-        <p id="secCount"></p>
+      <p id="hourCount"></p>
+      <p id="minCount"></p>
+      <p id="secCount"></p>
     </div>
 
     <div id="endTimer">
-        <p>Times up!</p>
+      <p>Times up!</p>
     </div>
 
     <script src="script.js"></script>
-   
-</body>
-
+  </body>
 </html>
