@@ -10,10 +10,15 @@
 </head>
 <body>
 
-    <input type="number" min='0' id='hour'/>
-    <input type="number" min='0' id='minute'/>
-    <input type="number" min='0' id='second'/>
-    <button id="start">Start countdown</button>
+    <div id="startTimer">
+        <input type="number" min='0' id='minute'/>
+        <button id="start">Start countdown</button>
+    </div>
+
+    <div id="countdown">
+        <p id="minCount"></p>
+        <p id="secCount"></p>
+    </div>
 
     <script src="script.js"></script>
    
