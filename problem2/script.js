@@ -36,6 +36,4 @@ function startTimer(){
     }, t);
 }
 
-function displayCountdown(countdown){
-    
-}
+
