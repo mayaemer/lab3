@@ -73,6 +73,7 @@ function createNote() {
   });
 }
 
+// function to add child note element
 function addChildNote(noteid) {
   const childDiv = document.createElement("div");
   childID= "child" + childIncrement();
@@ -106,6 +107,7 @@ function addChildNote(noteid) {
   rxjs.fromEvent(saveBtn, 'click').subscribe(() => saveChildNote(childID));
 }
 
+// function to save child note element
 function saveChildNote(childID){
     console.log(childID);
     let note = document.getElementById("addText" + childID).value;

@@ -185,6 +185,9 @@ function showCreate() {
   document.getElementById("addnote").style.display = "block";
 }
 
+
+// call functions when specified button clicked
+
 rxjs.fromEvent(create, "click").subscribe(() => showCreate());
 
 rxjs.fromEvent(addbtn, "click").subscribe(() => createNote());
